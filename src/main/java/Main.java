@@ -1,18 +1,16 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         double rubl = 0;
-        int human = 0;
         String tovar = null;
         double stoim = 0;
         String spisokTovar = "Список товаров:\n";
-        double stoimSumma = 10;
-        Calc calc = new Calc();
+        double stoimSumma = 0;
+        int endHum = vodHuman();
 
-        double endHum;
-        endHum = vodHuman(human);
         System.out.println("Далее введите наименование и стоимость товара.");
         while (true) {
             System.out.println("Введите наименование товара:");
@@ -21,30 +19,24 @@ public class Main {
             if (tovar.equalsIgnoreCase("Завершить")) {
                 break;
             } else {
-
-                while (true) {
-
-                    spisokTovar += tovar + "\n";
-                    break;
-                }
                 while (true) {
                     System.out.println("Введите стоимость товара:");
-
                     if (scanner.hasNextDouble()) {
                         stoim = scanner.nextDouble();
                         if (stoim > 0) {
+                            spisokTovar += tovar + "\n";
                             stoimSumma += stoim;
                             System.out.println("Товар успешно добавлен.");
                             break;
                         } else {
                             System.out.println("Ошибка, необходимо вводить правильную цену.");
-                            break;
                         }
 
                     } else {
                         System.out.println("Ошибка, необходимо вводить правильную цену");
-                        break;
+
                     }
+                    scanner.nextLine();
                 }
                 System.out.println("Введите следующий товар или \"Завершить\" для подсчета стоимости товаров.");
                 scanner.nextLine();
@@ -57,15 +49,15 @@ public class Main {
         System.out.println(spisokTovar + "Сумма товаров:\n" + endsum);
 
         rubl = Math.floor(stoimSumma / endHum);
-        calc.getRubl(rubl);
+        Calc.getRubl(rubl);
 
 
     }
 
-    public static double vodHuman(double human) {
-
+    public static int vodHuman() {
+        int human = 0;
+        Scanner scanner = new Scanner(System.in);
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("На сколько человек разделить счёт:");
             if (scanner.hasNextInt()) {
                 human = scanner.nextInt();

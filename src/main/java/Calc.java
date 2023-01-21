@@ -1,21 +1,17 @@
-import java.util.Scanner;
 
 public class Calc {
 
     public static void getRubl(double rubl) {
-        int lastRub = 0;
+
         int endRub = (int) rubl;
-        lastRub = endRub % 100 / 10;
 
 
-        if (lastRub == 1)
-        {
+        if ((endRub % 100 / 10) == 1) {
             System.out.println("Каждый человек должен заплатить по " + rubl + " рублей");
             return;
         }
 
-        switch (endRub % 10)
-        {
+        switch (endRub % 10) {
             case 1:
                 System.out.println("Каждый человек должен заплатить по " + rubl + " рублю");
                 return;
@@ -33,6 +29,6 @@ public class Calc {
     }
 
 
-    }
+}
 
 
