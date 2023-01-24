@@ -9,6 +9,7 @@ public class Main {
         double stoim = 0;
         String spisokTovar = "Список товаров:\n";
         double stoimSumma = 0;
+
         int endHum = vodHuman();
 
         System.out.println("Далее введите наименование и стоимость товара.");
@@ -48,7 +49,8 @@ public class Main {
 
         System.out.println(spisokTovar + "Сумма товаров:\n" + endsum);
 
-        rubl = Math.floor(stoimSumma / endHum);
+        rubl = stoimSumma / endHum;
+
         Calc.getRubl(rubl);
 
 
